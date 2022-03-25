@@ -9,6 +9,7 @@
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * rgb(33, 37, 41) layout-sidenav-light.html
  */
 :root {
   --bs-blue: #0d6efd;
@@ -11481,11 +11482,12 @@ body {
 }
 
 .sb-sidenav-dark {
-  background-color: #212529;
+  background-color: #212529;  
   color: rgba(255, 255, 255, 0.5);
 }
 .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: rgba(255, 255, 255, 0.25);
+  /*background-color: #212529;*/
+  color: rgba(255, 255, 255, 0.25); 
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
   color: rgba(255, 255, 255, 0.5);
@@ -11514,6 +11516,7 @@ body {
   color: #212529;
 }
 .sb-sidenav-light .sb-sidenav-menu .sb-sidenav-menu-heading {
+  /*background-color: #212529; /*Se agrego*/
   color: #adb5bd;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link {
