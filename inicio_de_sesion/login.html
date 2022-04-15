@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page"
-                            href="/usuario/index.html"><b>Inicio</b></a></li>
+                            href="/index.html"><b>Inicio</b></a></li>
                     <li class="nav-item"><a class="nav-link" href="#!"><b>Sobre nosotros</b></a></li>
                 </ul>
             </div>
@@ -45,16 +45,25 @@
                             <h3 class="text-center m-3 display-5 fw-bolder">Login</h3>
                         </div>
                         <div class="card-body">
-                            <form>
+
+                            <form class="needs-validation" action="/usuario/js/validacion_registro.js" id="formulario_inicio_sesion" novalidate >
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="inputCorreo" type="email"
-                                        placeholder="nombre@ejemplo.com" />
-                                    <label for="inputCorreo">Correo</label>
+                                    <!-- Correo -->
+                                    <input class="form-control position-relative" name="correo" id="correo" type="email"
+                                        placeholder="nombre@ejemplo.com" required />
+                                    <!-- Mensaje de validacion -->
+                                    <div class="valid-feedback">¡Campo valido!</div>
+                                    <div class="invalid-feedback">Complete este campo</div> 
+                                    <label class="form-label" for="correo">Correo</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="inputContraseña" type="password"
-                                        placeholder="Contraseña" />
-                                    <label for="inputContraseña">Contraseña</label>
+                                    <!-- Contraseña -->
+                                    <input class="form-control position-relative" name="contraseña" id="contraseña" type="password"
+                                        placeholder="Contraseña" required />
+                                        <!-- Mensaje de validacion -->
+                                        <div class="valid-feedback">¡Campo valido!</div>
+                                        <div class="invalid-feedback">Complete este campo</div> 
+                                    <labe class="form-label" for="contraseña">Contraseña</label>
                                 </div>
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" id="inputRecordarContraseña" type="checkbox"
@@ -74,7 +83,7 @@
                             </form>
                         </div>
                         <div class="card-footer text-center py-3">
-                            <div class="small"><a href="/usuario/inicio_de_sesion/registro.html">¿No tienes una cuenta? ¡Crea una cuenta!</a></div>
+                            <div class="small"><a href="/inicio_de_sesion/registro.html">¿No tienes una cuenta? ¡Crea una cuenta!</a></div>
                         </div>
                     </div>
                 </div>
@@ -96,6 +105,28 @@
             </div>
         </footer>
     </div>
+    <script>
+        // Ejemplo de JavaScript de inicio para deshabilitar el envío de formularios si hay campos no válidos
+        (function () {
+            'use strict'
+
+            // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Bucle sobre ellos y evitar la presentación
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
 </body>
 
 </html>
