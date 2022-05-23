@@ -70,8 +70,8 @@
   box-sizing: border-box;
 }
 .imagen-fondo-header {
-  background-image: url("/img/jean.jpg"); /* The image used */
-  background-color: #000000; /* Used if the image is unavailable */
+  background-image: url("./../img/jeans.jpg"); /* The image used */
+  /*background-color: #000000;  Used if the image is unavailable */
   height: 300px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
@@ -2494,8 +2494,6 @@ textarea.form-control-lg {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
