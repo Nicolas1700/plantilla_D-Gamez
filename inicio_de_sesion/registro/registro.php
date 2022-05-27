@@ -24,15 +24,15 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-secundary">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="./../index.html">D&Gamez</a>
+            <a class="navbar-brand" href="./../../index.html">D&Gamez</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page"
-                            href="./../index.html"><b>Inicio</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="./../sobre_nosotros.html"><b>Sobre nosotros</b></a></li>
+                            href="./../../index.html"><b>Inicio</b></a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../../sobre_nosotros.html"><b>Sobre nosotros</b></a></li>
                 </ul>
             </div>
     </nav>
@@ -49,7 +49,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card-body my-0">
-                        <form class="form" action="" id="formulario_validacion" method="post">
+
+                        <form method="post" class="form" action="" id="formulario_validacion" >
                             <div class="row mb-3">
                                 <!-- NOMBRE -->
                                 <div class="col-md-6">
@@ -150,25 +151,21 @@
                             </div>
                             <!-- boton crear cuenta -->
                             <div class="d-grid gap-1"">
-                                <button type=" submit" id="submit-btn" class="btn btn-primary">
-                                Crear cuenta
-                                </button>
+                                <input type="submit" name="crear_cuenta" id="submit-btn" class="btn btn-primary" value="Crear cuenta">
                             </div>
-                            <div class="m-3 text-center ">
-                                <p class="fs-6 fw-bold">Al darle al boton de crear cuenta, esta aceptando los <a href="#">
-                                        terminos</a> y <a href="#">condiciones</a> de la misma</p>
-                            </div>
-
                         </form>
+                        <?php
+                            include("registro_usuario.php");
+                        ?>
                     </div>
                     <div class="card-footer text-center py-2">
-                        <div class="small"><a href="./login.html">¿Ya tienes una cuenta? Inicia sesion</a></div>
+                        <div class="small"><a href="./../login/login.php">¿Ya tienes una cuenta? Inicia sesion</a></div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <script src="./../js/validacion.js"></script>
+    <script src="./../../js/validacion.js"></script>
 </body>
 
 </html>

@@ -25,15 +25,15 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-secundary">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="./../index.html">D&Gamez</a>
+            <a class="navbar-brand" href="./../../index.html">D&Gamez</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page"
-                            href="./../index.html"><b>Inicio</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="./../sobre_nosotros.html"><b>Sobre nosotros</b></a></li>
+                            href="./../../index.html"><b>Inicio</b></a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../../sobre_nosotros.html"><b>Sobre nosotros</b></a></li>
                 </ul>
             </div>
     </nav>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="row card-body">
 
-                            <form method="post" class="form" id="formulario_validacion" action="">
+                            <form method="post" class="form" id="formulario_validacion" action="validar.php">
                                 <div class="form-box col-12 form-floating mb-3 position-relative" id="validacion_correo">
                                     <!-- Correo -->
                                     <input class="input form-control" name="correo" id="correo" type="text"
@@ -78,12 +78,12 @@
                                     >
                                 </div>
                                 <div class="text-center m-4 mb-0">
-                                    <a class="small" href="./password.html">¿Olvidaste la contraseña?</a>
+                                    <a class="small" href="./../password.html">¿Olvidaste la contraseña?</a>
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer text-center py-3">
-                            <div class="small"><a href="./../inicio_de_sesion/registro.html">¿No tienes una cuenta? ¡Crea una cuenta!</a></div>
+                            <div class="small"><a href="./../../inicio_de_sesion/registro/registro.php">¿No tienes una cuenta? ¡Crea una cuenta!</a></div>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
             </div>
         </footer>
     </div>
-    <script src="./../js/validacion.js"></script>
+    <script src="./../../js/validacion.js"></script>
 </body>
 
 </html>
