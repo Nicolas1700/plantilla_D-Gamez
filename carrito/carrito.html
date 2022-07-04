@@ -57,22 +57,33 @@
       <h2>carrito</h2>
       <p class="lead">Lista de prodcutos que ha seleccionado.</p>
     </div>
-    <div class="container">
+    <div class="container position-relative">
 
-      <div class="row row-cols-3">
+      <!--Resumen del pedido con precios-->
+      <div class="position-absolute top-1 end-0 p-2 row col-3 col-lg-3 pt-3 border border-secondary mx-2 mt-2">
+        <h5 class="text-center pb-2 ">Resumen de tu pedido</h5>
+        <p class="text-star">Subtotal $(variable) </p>
+        <p class="">Envio: $(variable)</p>
+        <p class="">TOTAL: $(variable)</p>
+        <!--<input class="btn btn-success mb-2 " type="submit" value="Procesar Compra">-->
+        <a href="./direccion_envio.html">
+          <input class="btn btn-success mb-2 w-100" type="submit" value="Procesar Compra">
+        </a>
+      </div>
 
-        <!--Informacion de todo los productos-->
-        <div class="row float-star col-12 col-lg-8 mx-2 p-0 border border-secondary my-2 mx-0">
+      <!--Informacion de todo los productos-->
+      <div class="my-2">
+        <div class="row col-12 col-lg-8 mx-2 p-0  my-2 mx-1">
 
           <div class="row col-2 col-lg-2">
-            <img class=" w-100 py-3" src="/img/jean.jpg">
+            <img class=" w-100 py-3" src="../img/exposicion_de_jeans.jpg">
           </div>
 
           <!--Especificaciones del producto-->
           <div class="row col-12 col-lg-8 ">
-            <h4 class="col-8 ">Nombre del producto: asdddddddddddddd</h4>
-            <p class="">Talla: </p>
-            <p class="">valor: numero</p>
+            <h4 class="col-8 ">Nombre del producto: Jean </h4>
+            <p class=""><b>Talla:</b> 38 </p>
+            <p class=""><b>valor:</b> 40.000 $COP</p>
           </div>
 
           <!--Cantidad del producto-->
@@ -101,43 +112,60 @@
             </a>
           </div>
         </div>
+      </div>
+      <div class="my-2">
+        <div class="row col-12 col-lg-8 mx-2 p-0  my-2 mx-1">
 
+          <div class="row col-2 col-lg-2">
+            <img class=" w-100 py-3" src="../img/exposicion_de_jeans.jpg">
+          </div>
+
+          <!--Especificaciones del producto-->
+          <div class="row col-12 col-lg-8 ">
+            <h4 class="col-8 ">Nombre del producto: Jean </h4>
+            <p class=""><b>Talla:</b> 38 </p>
+            <p class=""><b>valor:</b> 40.000 $COP</p>
+          </div>
+
+          <!--Cantidad del producto-->
+          <div class="container d-flex flex-row-reverse row col-12 col-lg-2 m-0">
+            <!--Manejar respondive al estar en modo pequeño-->
+            <!--El width es cambiarlo a 100 cuando la pantalla este por debajo de col-lg-2 -->
+            <div class="dropdown row col-2 col-lg-12 d-flex flex-row-reverse w-75 mt-3 h-25 p-0">
+              <button class="btn btn-secondary dropdown-toggle w-100 p-0 mb-3" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                1
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item " href="#">1</a></li>
+                <li><a class="dropdown-item" href="#">2</a></li>
+                <li><a class="dropdown-item" href="#">3</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!--Opcion eleiminar prodcuto-->
+          <div class="bg-peligro d-flex flex-row-reverse row col-12 col-lg-12">
+            <a class=" rounded p-1 col-3 btn-danger mb-2 pt-1 text-center ">
+              <!--m-auto-->
+              <i class=" bi bi-x-square me-1 "></i>
+              Eliminar
+            </a>
+          </div>
+        </div>
       </div>
 
 
-      <!--Resumen del pedido con precios
-        <div class="p-2 row float-end col-12 col-lg-3 pt-3 border border-secondary mx-2 mt-2 m-0">
-          <h5 class="text-center pb-2 ">Resumen de tu pedido</h5>
-          <p class="text-star">Subtotal $(variable) </p>
-          <p class="">Envio: $(variable)</p>
-          <p class="">TOTAL: $(variable)</p>
-          <!--<input class="btn btn-success mb-2 " type="submit" value="Procesar Compra">-->
-      <!--<a href="/carrito/direccion_envio.html">
-            <input class="btn btn-success mb-2 w-100" type="submit" value="Procesar Compra">
-          </a>
-        </div>-->
-
-
-      <!--Resumen del pedido con precios-->
-      <div class="p-2 row float-end col-3 col-lg-3 pt-3 border border-secondary mx-2 mt-2 m-0">
-        <h5 class="text-center pb-2 ">Resumen de tu pedido</h5>
-        <p class="text-star">Subtotal $(variable) </p>
-        <p class="">Envio: $(variable)</p>
-        <p class="">TOTAL: $(variable)</p>
-        <!--<input class="btn btn-success mb-2 " type="submit" value="Procesar Compra">-->
-        <a href="./direccion_envio.html">
-          <input class="btn btn-success mb-2 w-100" type="submit" value="Procesar Compra">
-        </a>
-      </div>
     </div>
   </main>
   <footer class="my-5 pt-5 text-muted text-center text-small ">
-  <p class="mb-1">© 2021 - 2045 Company Name</p>
-  <ul class="list-inline">
-    <li class="list-inline-item"><a href="#">Privacy</a></li>
-    <li class="list-inline-item"><a href="#">Terms</a></li>
-    <li class="list-inline-item"><a href="#">Support</a></li>
-  </ul>
-</footer>
+    <p class="mb-1">© 2021 - 2045 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
 </body>
+
 </html>

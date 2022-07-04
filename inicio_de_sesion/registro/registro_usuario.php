@@ -12,28 +12,29 @@ if(isset($_POST['crear_cuenta'])){
 
         $nombre = trim($_POST['nombre']);
         $apellidos = trim($_POST['apellidos']);
-        $correo = trim($_POST['correo']);
         $celular = trim($_POST['celular']);
+        $correo = trim($_POST['correo']);
         $contraseña = trim($_POST['contraseña']);
         $confirmar_contraseña = trim($_POST['confirmar_contraseña']);
 
-        $consulta = "INSERT INTO usuario(nombre, apellido, correo, celular, contraseña) VALUES ('$nombre','$apellidos','$correo','$celular','$confirmar_contraseña')";
-
-        $resultado = mysqli_query($conexion,$consulta);
-        if($resultado){
+        $conexion->query("CALL registrar_usuarios('$nombre','$apellidos','$celular','$correo','$confirmar_contraseña')");
+        
+        if($conexion){
             ?>
-            <h3> ¡Te has Inscrito correctamente! </h3>
+            <h3 class="alert" > ¡Te has Inscrito correctamente! </h3>
             <?php
         } else{
             ?>
             <h3> ¡UPS a ocurrido un error! </h3>
             <?php
         }
+        $conexion->close();
 
     }else{
         ?>
         <h3> ¡Por favor completa los campos! </h3>
         <?php
+
     }
 }
 

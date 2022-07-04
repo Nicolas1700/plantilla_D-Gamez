@@ -39,7 +39,7 @@
     <!-- Header-->
     <header class="container">
         <div class="">
-            <h1 class="m-1 text-center display-5 fw-bolder">Registro</h1>
+            <h1 class="m-1 text-center display-5 fw-bolder">Registro </h1>
             <p class="m-3 text-center lead"><b>En esta parte encontrara la informacion que debe completar para realizar
                     su respectivo registro</b></p>
         </div>
@@ -166,6 +166,7 @@
         </div>
     </main>
     <script src="./../../js/validacion.js"></script>
+    <script src="./../../js/evitar_reenvio.js"></script>
 </body>
 
 </html>
