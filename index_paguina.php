@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+$row = $_SESSION['row'];
+
+var_dump($row)
+
+
+
+#echo "Bienvenido persona con el correo: $correo";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +48,19 @@
                     <li class="nav-item"><a class="nav-link active" aria-current="page"
                             href="./index.html"><b>Inicio</b></a></li>
                     <li class="nav-item"><a class="nav-link" href="./sobre_nosotros.html"><b>Sobre nosotros</b></a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><b>Tienda</b></a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">Tienda</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#!">Articulos populares</a></li>
+                            <li><a class="dropdown-item" href="#!">Lo mas nuevo</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <form class="d-flex m-1 nav-item">
                     <a class="btn btn-outline-primary" href="./inicio_de_sesion/registro/registro.php">

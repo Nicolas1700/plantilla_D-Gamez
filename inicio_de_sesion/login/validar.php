@@ -1,29 +1,35 @@
 <?php
 
-$correo = $_POST['correo'];
-$contraseña = $_POST['contraseña']; 
-
 session_start();
 
 include("con_bd.php");
 
-$consulta = " SELECT * FROM usuario WHERE correo='$correo' and contraseña='$contraseña' ";
+$correo = $_POST['correo'];
+$contraseña = $_POST['contraseña']; 
 
-$resultado = mysqli_query($conexion,$consulta);
+$consulta = "SELECT * FROM usuario WHERE correo='$correo' and contraseña='$contraseña' ";
 
-$comprobacion=mysqli_num_rows($resultado);
+$resultado = mysqli_query($mysqli,$consulta);
+
+$comprobacion = mysqli_num_rows($resultado);
 
 if ($comprobacion) {
-    header("location:./../../index.html");
+    
+    $consulta = "SELECT nombreUsuario('$correo','$contraseña')";
+    $resultado = mysqli_query($mysqli,$consulta);
+    $row = mysqli_fetch_row($resultado);
+    #print_r($row);
+
+    $_SESSION['row'] = $row;
+    $_SESSION['correo'] = $correo;
+    header("location:./../../index_paguina.php");
+
+
 }else{
     header("location:login.php");
     include("login.php");
-    
-    ?>
-    <h1>Error en la autentificacion</h1>
-    <?php
 }
 mysqli_free_result($resultado);
-mysqli_close($conexion);
+mysqli_close($mysqli);
 
 ?>

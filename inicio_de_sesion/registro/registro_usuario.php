@@ -17,9 +17,12 @@ if(isset($_POST['crear_cuenta'])){
         $contraseña = trim($_POST['contraseña']);
         $confirmar_contraseña = trim($_POST['confirmar_contraseña']);
 
-        $conexion->query("CALL registrar_usuarios('$nombre','$apellidos','$celular','$correo','$confirmar_contraseña')");
-        
-        if($conexion){
+        $consulta = ("CALL registrar_usuarios('$nombre','$apellidos','$celular','$correo','$confirmar_contraseña')");
+
+        $resultado = mysqli_query($mysqli,$consulta);
+
+        if($resultado){
+            header("location:registro.php");
             ?>
             <h3 class="alert" > ¡Te has Inscrito correctamente! </h3>
             <?php
@@ -28,7 +31,7 @@ if(isset($_POST['crear_cuenta'])){
             <h3> ¡UPS a ocurrido un error! </h3>
             <?php
         }
-        $conexion->close();
+        mysqli_close($mysqli);
 
     }else{
         ?>

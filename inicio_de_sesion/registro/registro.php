@@ -50,7 +50,7 @@
                 <div class="col-lg-8">
                     <div class="card-body my-0">
 
-                        <form method="post" class="form" action="" id="formulario_validacion" >
+                        <form method="post" class="form" action="registro_usuario.php" id="formulario_validacion" >
                             <div class="row mb-3">
                                 <!-- NOMBRE -->
                                 <div class="col-md-6">
@@ -151,7 +151,7 @@
                             </div>
                             <!-- boton crear cuenta -->
                             <div class="d-grid gap-1"">
-                                <input type="submit" name="crear_cuenta" id="submit-btn" class="btn btn-primary" value="Crear cuenta">
+                                <input type="submit" name="crear_cuenta" id="submit-btn" class="btn btn-primary" value="Crear_cuenta">
                             </div>
                         </form>
                         <?php
