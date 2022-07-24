@@ -1,4 +1,3 @@
-
 //--------------- Variables para validar --------------------------------
 //Se guarda en una variable el formulario a validar
 const formulario = document.getElementById('formulario_validacion');

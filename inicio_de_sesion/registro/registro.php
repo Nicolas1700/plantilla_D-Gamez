@@ -1,3 +1,10 @@
+
+<?php
+
+include("registro_usuario.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,10 +54,19 @@
     <main>
         <div class="container">
             <div class="row justify-content-center">
+
+            <div id="inscripcion_correcta"  class="text-center my-2 d-none">
+                <samp class="text-success bg-dark p-2 rounded">
+                    <i class="fa-solid fa-circle-check"></i>
+                        ¡Te has registrado correctamente! 
+                </samp>
+            </div>
+
                 <div class="col-lg-8">
                     <div class="card-body my-0">
 
                         <form method="post" class="form" action="registro_usuario.php" id="formulario_validacion" >
+                            
                             <div class="row mb-3">
                                 <!-- NOMBRE -->
                                 <div class="col-md-6">
@@ -148,6 +164,7 @@
                                             Ambas contraseñas deben ser iguales</div>
                                     </div>
                                 </div>
+                                
                             </div>
                             <!-- boton crear cuenta -->
                             <div class="d-grid gap-1"">
@@ -167,6 +184,19 @@
     </main>
     <script src="./../../js/validacion.js"></script>
     <script src="./../../js/evitar_reenvio.js"></script>
+    <script src="https://kit.fontawesome.com/1c7fd3bbff.js" crossorigin="anonymous"></script>
+
+    <script>
+        
+        const registro = "<?php echo  $_GET["registro"] ?>";
+
+        if(registro == "1"){
+            document.getElementById("inscripcion_correcta").classList.remove("d-none");
+        }else{
+            document.getElementById("inscripcion_correcta").classList.add("d-none");
+        }
+
+    </script>
 </body>
 
 </html>

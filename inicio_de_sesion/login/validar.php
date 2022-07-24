@@ -15,8 +15,8 @@ $comprobacion = mysqli_num_rows($resultado);
 
 if ($comprobacion) {
     
-    $consulta = "SELECT nombreUsuario('$correo','$contraseña')";
-    $resultado = mysqli_query($mysqli,$consulta);
+    $consulta2 = "SELECT nombreUsuario('$correo','$contraseña')";
+    $resultado = mysqli_query($mysqli,$consulta2);
     $row = mysqli_fetch_row($resultado);
     #print_r($row);
 
@@ -24,10 +24,10 @@ if ($comprobacion) {
     $_SESSION['correo'] = $correo;
     header("location:./../../index_paguina.php");
 
-
 }else{
+
     header("location:login.php");
-    include("login.php");
+
 }
 mysqli_free_result($resultado);
 mysqli_close($mysqli);

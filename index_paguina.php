@@ -97,6 +97,8 @@ var_dump($row)
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                <!-- Producto completo -->
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
@@ -118,6 +120,7 @@ var_dump($row)
                         </div>
                     </div>
                 </div>
+
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Sale badge-->
@@ -140,6 +143,7 @@ var_dump($row)
                         </div>
                     </div>
                 </div>
+
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Sale badge-->
@@ -165,6 +169,7 @@ var_dump($row)
                         </div>
                     </div>
                 </div>
+
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
@@ -185,6 +190,7 @@ var_dump($row)
                         </div>
                     </div>
                 </div>
+
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Sale badge-->
@@ -210,6 +216,7 @@ var_dump($row)
                         </div>
                     </div>
                 </div>
+
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
@@ -231,6 +238,7 @@ var_dump($row)
                         </div>
                     </div>
                 </div>
+
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Sale badge-->
@@ -255,6 +263,7 @@ var_dump($row)
                         </div>
                     </div>
                 </div>
+
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
@@ -276,6 +285,7 @@ var_dump($row)
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>

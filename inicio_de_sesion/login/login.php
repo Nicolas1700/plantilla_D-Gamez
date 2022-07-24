@@ -42,6 +42,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5">
                     <div class="card shadow-lg border-0 rounded-lg mt-4">
+
+                        <div id="inscripcion_incorrecta"  class="text-center my-2 d-none">
+                            <samp class="text-danger bg-dark p-1 rounded"> 
+                                <i class="fa-regular fa-circle-xmark"></i>
+                                ¡UPS! ha ocurrido un error, vuleve a intentarlo
+                            </samp>
+                        </div>
+
                         <div class="card-header">
                             <h3 class="text-center m-3 display-5 fw-bolder">Login</h3>
                         </div>
@@ -73,7 +81,7 @@
                                 </div>
 
                                 <div class="d-grid gap-1">
-                                    <input type="submit" id="submit-btn" class="btn btn-primary"                                    
+                                    <input type="submit" name="logn" id="submit-btn" class="btn btn-primary"                                    
                                     value="Login"
                                     >
                                 </div>
@@ -90,22 +98,42 @@
             </div>
         </div>
     </main>
+    <!--
     </div>
     <div id="layoutAuthentication_footer">
         <footer class="py-2 bg-light mt-4">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
                     <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </footer>
     </div>
+    -->
     <script src="./../../js/validacion.js"></script>
+    <script src="./../../js/evitar_reenvio.js"></script>
+    <script src="https://kit.fontawesome.com/1c7fd3bbff.js" crossorigin="anonymous"></script>
+
+    <script>
+
+        //const registro = "<?php echo $registro ?>";
+
+        /*
+        if(registro == "invalido"){
+            //document.getElementById("inscripcion_incorrecta").classList.remove("d-none");
+        }else{
+            //document.getElementById("inscripcion_incorrecta").classList.add("d-none");
+        }
+        */
+
+
+    </script>
 </body>
 
 </html>
