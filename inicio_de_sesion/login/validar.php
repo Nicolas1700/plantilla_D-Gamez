@@ -7,7 +7,7 @@ include("con_bd.php");
 $correo = $_POST['correo'];
 $contraseña = $_POST['contraseña']; 
 
-$consulta = "SELECT * FROM usuario WHERE correo='$correo' and contraseña='$contraseña' ";
+$consulta = "SELECT * FROM usuario WHERE correo='$correo' and contrasena='$contraseña' ";
 
 $resultado = mysqli_query($mysqli,$consulta);
 

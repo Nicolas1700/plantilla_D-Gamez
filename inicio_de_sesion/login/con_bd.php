@@ -1,5 +1,5 @@
 <?php
 
-$mysqli = mysqli_connect("localhost", "root", "", "prueba"); 
+$mysqli = mysqli_connect("localhost", "root", "", "pre_proyecto_sena"); 
 
 ?>

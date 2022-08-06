@@ -18,7 +18,7 @@ if(isset($_POST['crear_cuenta'])){
         $contraseña = trim($_POST['contraseña']);
         $confirmar_contraseña = trim($_POST['confirmar_contraseña']);
 
-        $consulta = ("CALL registrar_usuarios('$nombre','$apellidos','$celular','$correo','$confirmar_contraseña')");
+        $consulta = ("CALL reg_usuario ('$nombre','$apellidos','$celular','$correo','$contraseña')");
 
         $resultado = mysqli_query($mysqli,$consulta);
 
