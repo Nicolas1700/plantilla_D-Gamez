@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-08-2022 a las 23:59:03
+-- Tiempo de generación: 08-08-2022 a las 06:05:36
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -38,6 +38,20 @@ CREATE TABLE `detalle_venta` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `factura`
+--
+
+CREATE TABLE `factura` (
+  `id_factura` int(11) NOT NULL,
+  `id_pago` int(11) NOT NULL,
+  `id_detalle_venta` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `metodos_de_pago`
 --
 
@@ -57,9 +71,8 @@ CREATE TABLE `metodos_de_pago` (
 
 CREATE TABLE `pago` (
   `id_pago` int(11) NOT NULL,
-  `id_venta_en_proceso` int(11) NOT NULL,
   `id_metodos_de_pago` int(11) NOT NULL,
-  `precio_final` int(11) NOT NULL,
+  `id_detalle_venta` int(11) DEFAULT NULL,
   `codigo_de_verificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -71,13 +84,7 @@ CREATE TABLE `pago` (
 
 CREATE TABLE `pedidos` (
   `id_pedidos` int(11) NOT NULL,
-  `id_venta_confirmada` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `nombre` varchar(25) NOT NULL,
-  `apellido` varchar(25) NOT NULL,
-  `direccion` varchar(30) NOT NULL,
-  `contacto` int(11) NOT NULL
+  `id_factura` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -91,8 +98,8 @@ CREATE TABLE `producto` (
   `nombre_producto` varchar(15) NOT NULL,
   `talla` int(11) NOT NULL,
   `existencias` int(11) NOT NULL,
-  `color` int(11) NOT NULL,
-  `tipo_jean` int(11) NOT NULL
+  `color` varchar(11) NOT NULL,
+  `tipo_jean` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -103,7 +110,8 @@ CREATE TABLE `producto` (
 
 CREATE TABLE `registro_usuario` (
   `id_registro_usuario` int(11) NOT NULL,
-  `fecha_registro_usuario` date NOT NULL
+  `fecha_registro_usuario` date NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -122,47 +130,6 @@ CREATE TABLE `usuario` (
   `contraseña` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `venta`
---
-
-CREATE TABLE `venta` (
-  `id_venta` int(11) NOT NULL,
-  `fecha` date NOT NULL,
-  `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `venta_confirmada`
---
-
-CREATE TABLE `venta_confirmada` (
-  `id_venta_confirmada` int(11) NOT NULL,
-  `id_pago` int(11) NOT NULL,
-  `id_detalle_venta` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `venta_en_proceso`
---
-
-CREATE TABLE `venta_en_proceso` (
-  `id_venta_en_proceso` int(11) NOT NULL,
-  `id_venta` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `impuesto` int(11) NOT NULL,
-  `precio_final` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Índices para tablas volcadas
 --
@@ -172,8 +139,17 @@ CREATE TABLE `venta_en_proceso` (
 --
 ALTER TABLE `detalle_venta`
   ADD PRIMARY KEY (`id_detalle_venta`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_producto` (`id_producto`);
+  ADD KEY `id_producto` (`id_producto`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD PRIMARY KEY (`id_factura`),
+  ADD KEY `fk__id_pago` (`id_pago`),
+  ADD KEY `fk__id_usuario` (`id_usuario`),
+  ADD KEY `fk__id_detalle_venta` (`id_detalle_venta`) USING BTREE;
 
 --
 -- Indices de la tabla `metodos_de_pago`
@@ -186,23 +162,28 @@ ALTER TABLE `metodos_de_pago`
 --
 ALTER TABLE `pago`
   ADD PRIMARY KEY (`id_pago`),
-  ADD KEY `id_venta_en_proceso` (`id_venta_en_proceso`),
-  ADD KEY `id_metodos_de_pago` (`id_metodos_de_pago`);
+  ADD KEY `id_metodos_de_pago` (`id_metodos_de_pago`),
+  ADD KEY `pago_ibfk_3` (`id_detalle_venta`);
 
 --
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`id_pedidos`),
-  ADD KEY `fk___id_venta_confirmada` (`id_venta_confirmada`),
-  ADD KEY `fk___id_producto` (`id_producto`),
-  ADD KEY `fk___id_usuario` (`id_usuario`);
+  ADD KEY `id_factura` (`id_factura`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`id_producto`);
 
 --
 -- Indices de la tabla `registro_usuario`
 --
 ALTER TABLE `registro_usuario`
-  ADD PRIMARY KEY (`id_registro_usuario`);
+  ADD PRIMARY KEY (`id_registro_usuario`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `usuario`
@@ -211,39 +192,42 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- Indices de la tabla `venta`
---
-ALTER TABLE `venta`
-  ADD PRIMARY KEY (`id_venta`),
-  ADD KEY `fk_id_usuario` (`id_usuario`);
-
---
--- Indices de la tabla `venta_confirmada`
---
-ALTER TABLE `venta_confirmada`
-  ADD PRIMARY KEY (`id_venta_confirmada`),
-  ADD KEY `fk__id_pago` (`id_pago`),
-  ADD KEY `fk__id_detalle_venta` (`id_detalle_venta`),
-  ADD KEY `fk__id_usuario` (`id_usuario`);
-
---
--- Indices de la tabla `venta_en_proceso`
---
-ALTER TABLE `venta_en_proceso`
-  ADD PRIMARY KEY (`id_venta_en_proceso`),
-  ADD KEY `fk_id_venta` (`id_venta`),
-  ADD KEY `fk_id_producto` (`id_producto`);
-
---
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `detalle_venta`
+--
+ALTER TABLE `detalle_venta`
+  ADD CONSTRAINT `detalle_venta_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
+  ADD CONSTRAINT `detalle_venta_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+
+--
+-- Filtros para la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_pago`) REFERENCES `pago` (`id_pago`),
+  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_detalle_venta`) REFERENCES `detalle_venta` (`id_detalle_venta`),
+  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `pago`
 --
 ALTER TABLE `pago`
-  ADD CONSTRAINT `pago_ibfk_1` FOREIGN KEY (`id_venta_en_proceso`) REFERENCES `venta_en_proceso` (`id_venta_en_proceso`),
-  ADD CONSTRAINT `pago_ibfk_2` FOREIGN KEY (`id_metodos_de_pago`) REFERENCES `metodos_de_pago` (`id_metodos_de_pago`);
+  ADD CONSTRAINT `pago_ibfk_2` FOREIGN KEY (`id_metodos_de_pago`) REFERENCES `metodos_de_pago` (`id_metodos_de_pago`),
+  ADD CONSTRAINT `pago_ibfk_3` FOREIGN KEY (`id_detalle_venta`) REFERENCES `detalle_venta` (`id_detalle_venta`);
+
+--
+-- Filtros para la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`id_factura`) REFERENCES `factura` (`id_factura`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `registro_usuario` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

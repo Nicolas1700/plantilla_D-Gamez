@@ -2,13 +2,19 @@
 
 session_start();
 
+include("./inicio_de_sesion/login/con_bd.php");
+
+# Nombre usuario
 $row = $_SESSION['row'];
+$nombre_usuario = implode("",$row);
 
-var_dump($row);
+# var_dump($row);
 
-
-
-#echo "Bienvenido persona con el correo: $correo";
+# Consulta sobre los productos existentes 
+# $consulta = "SELECT * FROM `producto`";
+# $resultado = mysqli_query($mysqli,$consulta);
+# $productos = mysqli_fetch_array($resultado);
+# print_r($productos);
 
 ?>
 
@@ -63,15 +69,9 @@ var_dump($row);
                     </li>
                 </ul>
                 <form class="d-flex m-1 nav-item">
-                    <a class="btn btn-outline-primary" href="./inicio_de_sesion/registro/registro.php">
-                        <i class="bi bi-person-plus-fill me-1"></i>
-                        Registrarse
-                    </a>
-                </form>
-                <form class="d-flex m-1 nav-item">
-                    <a class="btn btn-outline-primary" href="./inicio_de_sesion/login/login.php">
-                        <i class="bi bi-person-fill me-1"></i>
-                        Inicia sesion
+                    <a class="btn btn-outline-success " href="./configuracion_usuario/conf_usu.php">
+                        <i class="bi-person-fill me-1"></i>
+                        <?php echo $nombre_usuario ?>
                     </a>
                 </form>
                 <form class="d-flex m-1 nav-item">
@@ -98,8 +98,9 @@ var_dump($row);
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-                <!-- Producto completo -->
+                <!-- Producto completo -->                
                 <div class="col mb-5">
+                    <!-- Poner foreach segun la cantidad de prouctos en PHP -->
                     <div class="card h-100">
                         <!-- Product image-->
                         <img class="card-img-top" src="./img/exposicion_de_jeans.jpg" alt="..." />
@@ -107,9 +108,9 @@ var_dump($row);
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <h5 class="fw-bolder">Tipo de jean</h5>
+                                <h5 class="fw-bolder">Tipo de jean: </h5>
                                 <!-- Product price-->
-                                $40.00
+                                Precio: $40.00
                             </div>
                         </div>
                         <!-- Product actions-->
@@ -119,8 +120,8 @@ var_dump($row);
                             </div>
                         </div>
                     </div>
+                    
                 </div>
-                
             </div>
         </div>
     </section>
