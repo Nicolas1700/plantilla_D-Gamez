@@ -8,13 +8,9 @@ include("./inicio_de_sesion/login/con_bd.php");
 $row = $_SESSION['row'];
 $nombre_usuario = implode("",$row);
 
-# var_dump($row);
-
 # Consulta sobre los productos existentes 
-# $consulta = "SELECT * FROM `producto`";
-# $resultado = mysqli_query($mysqli,$consulta);
-# $productos = mysqli_fetch_array($resultado);
-# print_r($productos);
+$consulta = "SELECT * FROM `producto`";
+$resultado = mysqli_query($mysqli,$consulta);
 
 ?>
 
@@ -97,7 +93,7 @@ $nombre_usuario = implode("",$row);
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
+                <?php while($productos = mysqli_fetch_array($resultado)): ?>
                 <!-- Producto completo -->                
                 <div class="col mb-5">
                     <!-- Poner foreach segun la cantidad de prouctos en PHP -->
@@ -106,11 +102,14 @@ $nombre_usuario = implode("",$row);
                         <img class="card-img-top" src="./img/exposicion_de_jeans.jpg" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
-                            <div class="text-center">
+                            <div class="text-rigth">
                                 <!-- Product name-->
-                                <h5 class="fw-bolder">Tipo de jean: </h5>
+                                <p> <b> Tipo de jean: </b> <?php echo $productos['tipo_jean']; ?> </p>
                                 <!-- Product price-->
-                                Precio: $40.00
+                                <p> <b> Talla: </b> <?php echo $productos['talla'] ?> </p>
+                                <p> <b> Color: </b> <?php echo $productos['color'] ?> </p>
+                                <p class="text-center"> <b> Precio: </b> <?php echo $productos['precio'] ?> </p>
+                                
                             </div>
                         </div>
                         <!-- Product actions-->
@@ -120,8 +119,8 @@ $nombre_usuario = implode("",$row);
                             </div>
                         </div>
                     </div>
-                    
                 </div>
+                <?php endwhile; ?>  
             </div>
         </div>
     </section>
