@@ -74,7 +74,7 @@ $resultado = mysqli_query($mysqli,$consulta);
                     <a class="btn btn-outline-dark mx-3" href="./carrito/carrito.html">
                         <i class="bi-cart-fill me-1"></i>
                         Carrito
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        <button class="badge bg-dark text-white ms-1 rounded-pill">0</button>
                     </a>
                 </form>
             </div>
