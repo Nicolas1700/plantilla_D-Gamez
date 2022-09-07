@@ -135,30 +135,32 @@ if(isset($_POST['add'])){
             </div>
         </div>
     </nav>-->
+
+    
+    <?php require_once("./header.php");?>
     <!-- Header-->
-    <!--<header class="bg-dark py-4">
+    <header class="bg-dark py-4">
         <div class="container px-2 px-lg-5 my-5">
             <div class="text-center text-white ">
                 <h1 class="display-4 fw-bolder ">Jeans para caballero</h1>
                 <p class="lead fw-bold text-white mb-0 ">¡Estilo y elegancia en todo momento!</p>
             </div>
         </div>
-    </header>-->
+    </header>
     
-    <?php require_once("./header.php");?>
+    <main>
+        <div class="container">
+            <div class="row text-center py-5">
+            
+            <?php
+            $result = $database->getDate();
+            while ($row ='mysqli_fetch_assoc'($result)){
+                component($row['product_name'],$row['product_price'],$row['product_image'],$row['id'] );
+            }?>
 
-    <div class="container">
-        <div class="row text-center py-5">
-        
-        <?php
-        $result = $database->getDate();
-        while ($row ='mysqli_fetch_assoc'($result)){
-            component($row['product_name'],$row['product_price'],$row['product_image'],$row['id'] );
-        }?>
-
-        </div> 
-    </div>
-
+            </div> 
+        </div>
+    </main>
     <script src="./js/custom.js"></script>
 
 </body>

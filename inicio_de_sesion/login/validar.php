@@ -20,6 +20,7 @@ if ($comprobacion) {
     $row = mysqli_fetch_row($resultado);
     #print_r($row);
 
+    // $_SESION['id_usuario'] = $
     $_SESSION['row'] = $row;
     $_SESSION['correo'] = $correo;
     header("location:./../../carrito2/Shopping/index_paguina.php");

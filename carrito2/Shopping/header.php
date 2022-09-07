@@ -1,9 +1,12 @@
+
 <header id="">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white border-button">
         <!-- Shopping Cart-->
-        <a href="./index_paguina.php" class="navbar-">
+        <a class="navbar-brand text-dark" href="./index_paguina.php">D&Gamez</a>
+        <a href="./index_paguina.php" class="navbar ">
             <h3 class="px-5"></h3>
-            <i class="fas fa-shopping-basket"></i> Shopping Cart
+            <i class="fas fa-shopping-basket"></i> 
+            <smap class="text-dark"> Inicio</smap>
         </a>
         <button class="navbar-toggler"
             type="button"
@@ -17,13 +20,21 @@
 
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="mr auto"></div>
-            <div class="navbar-nav">
+        
+        <!-- botones de Perfil y carrito  -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex m-1 nav-item">
+                <a class="btn btn-outline-success " href="./configuracion_usuario/conf_usu.php">
+                    <i class="bi-person-fill me-1"></i>
+                    <?php echo $nombre_usuario ?>
+                </a>
+            </form>
+            
+            <div class=" d-flex navbar-nav nav-item">
                 <!--  cart -->  
-                <a href="./cart.php" class="nav-item nav-link active">
-                    <h5 class="px-5 cart">
-                    <i class="fas fa-shopping-cart"></i> Cart
+                <a href="./cart.php" class="nav-item nav-link active cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <samp class="text-dark" >Carrito</samp>
 
                     <?php
 
@@ -40,4 +51,5 @@
         </div>
 
     </nav>
+    
 </header>

@@ -5,21 +5,36 @@ session_start();
 require_once("./CreateDb.php");
 require_once("./component.php");
 
+$row = $_SESSION['row'];
+$nombre_usuario = implode("",$row);
+
 $db = new CreateDb(dbname: "pre_proyecto_sena", tablename: "Producttb");
 
+//$id_producto = $_GET['id'];
+
+// Remover producto
 if(isset($_POST['remove'])){
+
    if($_GET['action']=='remove'){
+    
+    echo print_r($_SESSION['cart']);
+    echo "<br>";
+    echo "<br>";
+
        foreach($_SESSION['cart'] as $key =>$value){
+
            print_r("EL valor de key es: " . $key);
+
            if($value["product_id"] == $_GET['id']){
-               $elemetDelet = $_SESSION['cart']['$key'];
-               unset($elemetDelet);
-               echo"<script>alert('Product has been Removed...!')</script>";
+
+               unset($_SESSION['cart'][$key]);
+               echo"<script>alert('El producto ha sido eliminado...!')</script>";
                echo"<script>window.location = './cart.php'</script>";
            }
        }
    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +43,7 @@ if(isset($_POST['remove'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
+    <title>D&Gamez</title>
     <!--Font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -44,64 +59,69 @@ require_once('./header.php');
 
 <div class="conatainer-fluid">
     <div class="row px-5">
-        <div class="col-md-5"></div>
-        <div class="col-md-7">
-            <div class="shopping-cart">
-                <h6>My Cart</h6>
-                <hr>
-                
-               <?php
 
-                $total = 0;
-              if (isset($_SESSION['cart'])){
-                $product_id = array_column($_SESSION['cart'],column_key:'product_id');
+            <div class="col-md-7">
+                <div class=" shopping-cart">
+                    <h6>Carrito</h6>
+                    <hr>
+                <?php
 
-                $result = $db->getDate();
-                while ($row = mysqli_fetch_assoc($result)){                
-                    foreach ($product_id as $id){
-                        if ($row['id']== $id){
-                            cartElement($row['product_image'],$row['product_name'],$row['product_price'], $row['id']);
-                            $total = $total + (int)$row['product_price'];
+                    $total = 0;
+                if (isset($_SESSION['cart'])){
+                    $product_id = array_column($_SESSION['cart'],column_key:'product_id');
+
+                    $result = $db->getDate();
+                    while ($row = mysqli_fetch_assoc($result)){                
+                        foreach ($product_id as $id){
+                            if ($row['id']== $id){
+                                cartElement($row['product_image'],$row['product_name'],$row['product_price'], $row['id']);
+                                $total = $total + (int)$row['product_price'];
+                            }
                         }
-                    }
-                } 
-              }else{
-                  echo"<h5>Cart is Empty</h5>";
-              }
-
+                    } 
+                }else{
+                    echo"<h5>Cart is Empty</h5>";
+                }
                 ?>
-               
-            </div>
-        </div>
-        <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25">
-            <div class="p-4">
-                <h6>PRICE DETAILS</h6>
-                <hr>
-                <div class="row price-details">
-                    <div class="col-md-6">
-                        <?php
-                        if(isset($_SESSION['cart'])){
-                            $count = count($_SESSION['cart']);
-                            echo"<h6>Price ($count items)</h6>";
-                        }else{
-                            echo"<h6>Price (0 items)</h6>";
-                        }
-                        ?>
-                        <h6>Delivery Charges</h6>
-                        <hr>
-                        <h6>Amount Payabel</h6>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>$<?php echo $total;?></h6>
-                        <h6 class="text-success">FREE</h6>
-                        <hr>
-                        <h6>$<?php
-                        echo $total;
-                          ?></h6>
-                    </div>
+
                 </div>
             </div>
-        </div>
+            <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25">
+                <div class="p-4">
+
+                    <h6>PRICE DETAILS</h6>
+                    <hr>
+
+                    <div class="row price-details">
+                        <div class="col-md-6">
+                            <?php
+                            if(isset($_SESSION['cart'])){
+                                $count = count($_SESSION['cart']);
+                                echo"<h6>Price ($count items)</h6>";
+                            }else{
+                                echo"<h6>Price (0 items)</h6>";
+                            }
+                            ?>
+                            <h6>Delivery Charges</h6>
+                            <hr>
+                            <h6>Amount Payabel</h6>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>$<?php echo $total;?></h6>
+                            <h6 class="text-success">FREE</h6>
+                            <hr>
+                            <h6> $ <?php echo $total; ?> </h6>
+                        </div>
+                    </div>
+
+                    <button>
+                        
+                        <a href="./direccion_envio.html"> Metodo de pago </a>
+
+                    </button>
+                </div>
+            </div>
+        
     </div>
 </div>
 
