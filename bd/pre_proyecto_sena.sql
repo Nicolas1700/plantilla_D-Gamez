@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2022 a las 03:41:02
+-- Tiempo de generación: 07-09-2022 a las 05:55:05
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -46,6 +46,29 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `producttb`
+--
+
+CREATE TABLE `producttb` (
+  `id` int(11) NOT NULL,
+  `product_name` varchar(25) NOT NULL,
+  `product_price` float DEFAULT NULL,
+  `product_image` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `producttb`
+--
+
+INSERT INTO `producttb` (`id`, `product_name`, `product_price`, `product_image`) VALUES
+(1, 'Jean 1', 42000, './img/exposicion_de_jeans.jpg'),
+(2, 'Jean 2', 45000, './img/exposicion_de_jeans.jpg'),
+(3, 'Jean 3', 43000, './img/exposicion_de_jeans.jpg'),
+(4, 'Jean 4', 42000, './img/exposicion_de_jeans.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -71,6 +94,12 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `celular`, `correo`, 
 --
 
 --
+-- Indices de la tabla `producttb`
+--
+ALTER TABLE `producttb`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -79,6 +108,12 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `producttb`
+--
+ALTER TABLE `producttb`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
