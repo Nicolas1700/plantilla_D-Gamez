@@ -1,16 +1,12 @@
 <?php
 
+/* Tabla usuiario*/
 session_start();
-
 include("./inicio_de_sesion/login/con_bd.php");
-
 # Nombre usuario
 $row = $_SESSION['row'];
 $nombre_usuario = implode("",$row);
-
-# Consulta sobre los productos existentes 
-$consulta = "SELECT * FROM `producto`";
-$resultado = mysqli_query($mysqli,$consulta);
+/* Tabla producto *//
 
 ?>
 
@@ -103,52 +99,7 @@ $resultado = mysqli_query($mysqli,$consulta);
             </div>
         </div>
     </header>
-    <!-- Section-->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> 
-                <?php while($productos = mysqli_fetch_array($resultado)): ?>
-                <!-- Producto completo -->
-                <div class="col mb-5 allContainerCart"> 
-                    <!-- Poner foreach segun la cantidad de prouctos en PHP  -->
-                    <div class="card h-100">
-                            <!-- Product image --> 
-                            <img class="card-img-top" src="./img/exposicion_de_jeans.jpg" alt="..." />
-                            <!-- Product details -->
-                            <div class="card-body p-4 dettalle_producto">
-                                <div class="text-rigth">
-                                    <!-- Product name -->
-                                    <p> <b> Tipo de jean: </b> <?php echo $productos['tipo_jean']; ?> </p>
-                                    <!-- Product price -->
-                                    <p> <b> Talla: </b> <?php echo $productos['talla'] ?> </p>
-                                    <p> <b> Color: </b> <?php echo $productos['color'] ?> </p>
-                                    <p class="text-center"> <b> Precio: </b> <?php echo $productos['precio'] ?> </p>
-                                    <!--<p>ID = <?php //echo $productos['id_producto']?> </p>-->
-                                </div>
-                            </div>
-                            <!-- Product actions -->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                    <button  name="addCar" class="btn btn-outline-dark mt-auto btc_form"
-                                    href="index_paguina.php?name=true&id=<?php echo $productos['id_producto']?>" >
-                                    Añadir al carrito
-                                    </button>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-
-                <?php endwhile; ?>
-            </div>
-        </div>
-    </section>
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
-        </div>
-    </footer>
-
+    
     <script src="./js/custom.js"></script>
 
 </body>

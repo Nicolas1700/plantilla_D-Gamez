@@ -60,72 +60,7 @@ session_start();
       </div>
     </div>
   </nav>
-  <main class="main">
-
-    <div class="py-3 text-center">
-      <h2>carrito</h2>
-      <p class="lead">Lista de prodcutos que ha seleccionado.</p>
-    </div>
-
-    <div class="container position-relative">
-      <!-- Desde aca -->
-       <!--Resumen del pedido con precios-->
-       <div class="position-absolute top-1 end-0 p-2 row col-3 col-lg-3 pt-3 border border-secondary mx-2 mt-2">
-        <h5 class="text-center pb-2 ">Resumen de tu pedido</h5>
-        <p class="text-star">Subtotal  </p>
-        <p class="">Envio:</p>
-        <p class="">TOTAL:</p>
-        <!--<input class="btn btn-success mb-2 " type="submit" value="Procesar Compra">-->
-        <a href="./direccion_envio.html" >
-          <input class="btn btn-success mb-2 w-100" type="submit" value="Procesar Compra">
-        </a>
-      </div>  
-      <?php 
-        
-      ?>
-      <!--Informacion de todo los productos-->
-      <div class="my-2">
-        <div class="row col-12 col-lg-8 mx-2 p-0  my-2 mx-1">
-
-          <div class="row col-2 col-lg-2">
-            <img class=" w-100 py-3" src="../img/exposicion_de_jeans.jpg">
-          </div>
-
-          <!--Especificaciones del producto-->
-          <div class="row col-12 col-lg-8 ">
-            <h4 class="col-8 ">Nombre del producto: Jean </h4>
-            <p class=""><b>Talla:</b> 38 </p>
-            <p class=""><b>valor:</b> 40.000 $COP</p>
-          </div>
-
-          <!--Cantidad del producto-->
-          <div class="container d-flex flex-row-reverse row col-12 col-lg-2 m-0">
-            <!--Manejar respondive al estar en modo pequeño-->
-            <!--El width es cambiarlo a 100 cuando la pantalla este por debajo de col-lg-2 -->
-            <div class="dropdown row col-2 col-lg-12 d-flex flex-row-reverse w-75 mt-3 h-25 p-0">
-            <select class="form-select py-2" aria-label="Default select example">
-              <option selected></option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-            </div>
-          </div>
-
-          <!--Opcion eleiminar prodcuto-->
-          <div class="bg-peligro d-flex flex-row-reverse row col-12 col-lg-12">
-            <a class=" rounded p-1 col-3 btn-danger mb-2 pt-1 text-center ">
-              <!--m-auto-->
-              <i class=" bi bi-x-square me-1 "></i>
-              Eliminar
-            </a>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-
-  </main>
+  
 
 </body>
 
