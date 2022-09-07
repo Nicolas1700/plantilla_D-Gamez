@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-08-2022 a las 05:25:08
+-- Tiempo de generación: 07-09-2022 a las 03:23:47
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -35,6 +35,12 @@ END$$
 --
 -- Funciones
 --
+CREATE DEFINER=`root`@`localhost` FUNCTION `hash_pas` (`cor` VARCHAR(50)) RETURNS VARCHAR(65) CHARSET utf8mb4  BEGIN
+DECLARE has varchar (65);
+SELECT contrasena INTO has FROM usuario WHERE correo = cor ;
+RETURN has;
+END$$
+
 CREATE DEFINER=`root`@`localhost` FUNCTION `nombreUsuario` (`cor` VARCHAR(50), `con` VARCHAR(12)) RETURNS VARCHAR(50) CHARSET utf8mb4  BEGIN
 DECLARE nom varchar (50);
 SELECT nombre INTO nom FROM usuario WHERE correo = cor AND contrasena = con;
@@ -52,11 +58,22 @@ DELIMITER ;
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `nombre_producto` varchar(15) NOT NULL,
-  `talla` int(11) NOT NULL,
+  `talla` varchar(11) NOT NULL,
   `existencias` int(11) NOT NULL,
-  `color` int(11) NOT NULL,
-  `tipo_jean` int(11) NOT NULL
+  `color` varchar(11) NOT NULL,
+  `tipo_jean` varchar(11) NOT NULL,
+  `precio` decimal(50,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id_producto`, `nombre_producto`, `talla`, `existencias`, `color`, `tipo_jean`, `precio`) VALUES
+(1, 'Jean', '30', 100, 'gris', 'slim', '45000'),
+(2, 'Jean', '32', 200, 'blanco', 'slim', '45000'),
+(3, 'Jean oscuro', '29', 150, 'negro', 'bootcut', '46000'),
+(4, 'Jean', '34', 10, 'blanco', 'Flare', '46000');
 
 -- --------------------------------------------------------
 
@@ -70,7 +87,7 @@ CREATE TABLE `usuario` (
   `apellido` varchar(25) NOT NULL,
   `celular` int(11) NOT NULL,
   `correo` varchar(50) NOT NULL,
-  `contrasena` varchar(12) NOT NULL
+  `contrasena` varchar(65) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -78,7 +95,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `celular`, `correo`, `contrasena`) VALUES
-(9, 'Nicolas', 'Parada Cuervo', 2147483647, 'a@a.a', '0000');
+(15, 'Nicolas', 'Parada Cuervo', 2147483647, 'a@a.a', 'aaaa'),
+(16, 'Nicolas', 'Parada Cuervo', 2147483647, 'a@a.a', 'asas');
 
 --
 -- Índices para tablas volcadas
@@ -101,10 +119,16 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

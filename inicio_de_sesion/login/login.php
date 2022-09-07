@@ -120,20 +120,6 @@
     <script src="./../../js/evitar_reenvio.js"></script>
     <script src="https://kit.fontawesome.com/1c7fd3bbff.js" crossorigin="anonymous"></script>
 
-    <script>
-
-        //const registro = "<?php echo $registro ?>";
-
-        /*
-        if(registro == "invalido"){
-            //document.getElementById("inscripcion_incorrecta").classList.remove("d-none");
-        }else{
-            //document.getElementById("inscripcion_incorrecta").classList.add("d-none");
-        }
-        */
-
-
-    </script>
 </body>
 
 </html>
