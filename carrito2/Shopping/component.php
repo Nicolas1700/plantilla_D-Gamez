@@ -44,7 +44,7 @@ echo $element;
 function cartElement($Productimg, $Productname, $Productprice, $productid){
     $element = '
     
-    <form action="./carrito2/Shopping/cart.php?action=remove&id='.$productid.'" method="post" class="cart-items">
+    <form action="./cart.php?action=remove&id='.$productid.'" method="post" class="cart-items">
                        <div class="border rounded">
                            <div class="row bg-white">
                                <div class="col-md-3 pl-0">

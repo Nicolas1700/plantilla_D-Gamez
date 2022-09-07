@@ -15,7 +15,7 @@ if(isset($_POST['remove'])){
                $elemetDelet = $_SESSION['cart']['$key'];
                unset($elemetDelet);
                echo"<script>alert('Product has been Removed...!')</script>";
-               echo"<script>window.location = './carrito2/Shopping/cart.php'</script>";
+               echo"<script>window.location = './cart.php'</script>";
            }
        }
    }

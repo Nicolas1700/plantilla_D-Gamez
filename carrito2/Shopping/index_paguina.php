@@ -1,7 +1,7 @@
 <?php
 /* Tabla usuiario*/
 session_start();
-include("./inicio_de_sesion/login/con_bd.php");
+include("./../../inicio_de_sesion/login/con_bd.php");
 # Nombre usuario
 $row = $_SESSION['row'];
 $nombre_usuario = implode("",$row);
@@ -10,8 +10,8 @@ $nombre_usuario = implode("",$row);
 
 //start sesion
 
-require_once('./carrito2/Shopping/CreateDb.php');
-require_once('./carrito2/Shopping/component.php');
+require_once('./CreateDb.php');
+require_once('./component.php');
 
 
 //create instance of Createdb class
@@ -70,7 +70,7 @@ if(isset($_POST['add'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Link de estilos de productos -->
-    <link rel="stylesheet" href="./carrito2/Shopping/style.css">
+    <link rel="stylesheet" href="./style.css">
 
     <!-- Latest compiled JavaScript -->
     <link rel="stylesheet" 
@@ -145,7 +145,7 @@ if(isset($_POST['add'])){
         </div>
     </header>-->
     
-    <?php require_once("./carrito2/Shopping/header.php");?>
+    <?php require_once("./header.php");?>
 
     <div class="container">
         <div class="row text-center py-5">

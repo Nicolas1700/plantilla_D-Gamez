@@ -22,7 +22,7 @@ if ($comprobacion) {
 
     $_SESSION['row'] = $row;
     $_SESSION['correo'] = $correo;
-    header("location:./../../index_paguina.php");
+    header("location:./../../carrito2/Shopping/index_paguina.php");
 
 }else{
 
