@@ -67,6 +67,7 @@ include("registro_usuario.php");
 
                         <form method="post" class="form" action="registro_usuario.php" id="formulario_validacion" >
                             
+                            <!-- Nombre y apellidos -->
                             <div class="row mb-3">
                                 <!-- NOMBRE -->
                                 <div class="col-md-6">
@@ -85,8 +86,8 @@ include("registro_usuario.php");
                                             solo puede contener letras"</div>
                                     </div>
                                 </div>
+                                <!-- Apellido -->
                                 <div class="col-md-6">
-                                    <!-- Apellido -->
                                     <div class="form-floating">
                                         <input class="input form-control" name="apellidos" id="apellidos" type="text"
                                             placeholder="apellidos" required />
@@ -131,6 +132,20 @@ include("registro_usuario.php");
                                         puede contener numero debe tener entre 10 y 13 digitos!</div>
                                 </div>
                             </div>
+                            <!-- Direccion -->
+                            <div class="col-md-12 mb-3">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    <input class="input form-control" name="direccion" id="direccion" type="text"
+                                        placeholder="direccion" required />
+                                    <label class="form-label" for="correo">Dirección</label>
+                                    <!-- Mensaje de validacion -->
+                                    <div id="validacion_celular-correcta" class="text-success d-none">¡Campo valido!
+                                    </div>
+                                    <div id="validacion_celular-vacio" class="text-danger d-none">¡Completa este campo!
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Contraseña y confirmar contraseña -->
                             <div class="row mb-3">
                                 <!-- contraseña -->
                                 <div class="col-md-6">
@@ -170,6 +185,7 @@ include("registro_usuario.php");
                             <div class="d-grid gap-1"">
                                 <input type="submit" name="crear_cuenta" id="submit-btn" class="btn btn-primary" value="Crear_cuenta">
                             </div>
+
                         </form>
                         <?php
                             include("registro_usuario.php");

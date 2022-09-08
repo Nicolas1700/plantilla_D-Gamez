@@ -8,6 +8,7 @@ if(isset($_POST['crear_cuenta'])){
     strlen($_POST['apellidos']) >= 1 && 
     strlen($_POST['correo']) >= 1 && 
     strlen($_POST['celular']) >= 1 && 
+    strlen($_POST['direccion']) >= 1 && 
     strlen($_POST['contraseña']) >= 1 &&  
     strlen($_POST['confirmar_contraseña']) >= 1 ){
 
@@ -15,10 +16,11 @@ if(isset($_POST['crear_cuenta'])){
         $apellidos = trim($_POST['apellidos']);
         $celular = trim($_POST['celular']);
         $correo = trim($_POST['correo']);
+        $direcion = trim($_POST['direccion']);
         $contraseña = trim($_POST['contraseña']);
         $confirmar_contraseña = trim($_POST['confirmar_contraseña']);
 
-        $consulta = ("CALL reg_usuario ('$nombre','$apellidos','$celular','$correo','$contraseña')");
+        $consulta = ("CALL reg_usuario ('$nombre','$apellidos','$celular','$correo','$direcion','$contraseña')");
 
         $resultado = mysqli_query($mysqli,$consulta);
 
