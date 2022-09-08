@@ -5,26 +5,13 @@
         <!-- Shopping Cart-->
         <a class="navbar-brand text-dark" href="./index_paguina.php">D&Gamez</a>
 
-        <a href="./index_paguina.php" class="navbar px-3 nav-link text-dark">
-            <i class="fas fa-shopping-basket"></i>
+        <a href="./index_paguina.php" class="navbar px-3 nav-link text-dark font-weight-bold">
             <samp>Inicio</samp>
         </a>
-
-        <button class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-
-            <span class="navbar-toggler-icon"></span>
-
-        </button>
         
-        <a class="navbar-nav d-flex justify-content-star ">
+        <a class="navbar-nav d-flex justify-content-star font-weight-bold">
             <samp class="">
-                <a class="nav-link text-dark w-50" href="./../../sobre_nosotros.html">Sobre nosotros</a>
+                <a class="nav-link text-dark w-50 font-weight-bold" href="./../../sobre_nosotros.html">Sobre nosotros</a>
             </samp>
         </a>
 
@@ -42,15 +29,15 @@
             <div class="d-flex justify-content-end collapse rounded mx-1 nav-item">
                 <a  class="btn btn-outline-primary" href="./cart.php" >
                     <i class="fas fa-shopping-cart"></i>
-                    <samp class="text-dark w-100">Carrito</samp>
+                    <samp class="text-dark w-100 ">Carrito</samp>
 
                     <?php
 
                     if(isset($_SESSION['cart'])){
                         $count = count($_SESSION['cart']);
-                        echo "<span id=\"cart_count\" class=\"text-warning bg-light\">$count</span>";
+                        echo "<span id=\"cart_count\" class=\"text-warning bg-light \">$count</span>";
                     }else{
-                        echo "<span id=\"cart_count\" class=\"text-warning bg-light\"></span>";
+                        echo "<span id=\"cart_count\" class=\"text-warning bg-light \"></span>";
                     }
                     ?>
                     

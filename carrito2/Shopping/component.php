@@ -21,7 +21,7 @@ $element = '
                 <i class="far fa-star"></i>
             </h6>
             <p class="card-text">
-                Some quick example text to build on the card.
+                Caracteristicas: 
             </p>
             <h5>
                 <small><s class="text-secondary">$70.000</s></small>
@@ -44,19 +44,25 @@ echo $element;
 function cartElement($Productimg, $Productname, $Productprice, $productid){
     $element = '
     
-    <form action="./cart.php?action=remove&id='.$productid.'" method="post" class="cart-items">
-                       <div class="border rounded">
-                           <div class="row bg-white">
-                               <div class="col-md-3 pl-0">
-                                   <img src="'.$Productimg.'" alt="Image1" class="img-fluid">
+    <form action="./cart.php?action=remove&id='.$productid.'" method="post" class="cart-items d-flex">
+                       <div class="container border rounded ">
+                           <div class="row bg-white ">
+                                <!-- Imagen producto -->
+                               <div class="col-md-3 pl-0 col-4 ">
+                                   <img src="'.$Productimg.'" alt="Image1" class="img-fluid w-100">
                                </div>
-                               <div class="col-md-6">
-                                   <h5 class="pt-2">'.$Productname.'</h5>
-                                   <small class="text-secondary">Seller:dailytuition</small>
-                                   <h5 class="pt-2">'.$Productprice.'</h5>
-                                   <button type="submit" class="btn btn-warning">Save for Later</button>
-                                   <button type="submit" class="btn btn-danger mx-2" name="remove">Remove</button>
-                               </div>
+                               <!-- Descripción producto -->
+                               <div class="col col-md-6 ">
+                                    <div>
+                                        <h5 class="pt-2">'.$Productname.'</h5>
+                                        <small class="text-secondary">Descripción: Poner</small>
+                                        <h5 class="pt-2">'.$Productprice.'</h5>
+                                   </div>
+                                </div>
+                                <!--Boton borrar -->
+                                <div class="row justify-content-end" >
+                                    <button type="submit" class=" btn btn-danger w-25 col-8 mb-3 " name="remove">Borrar</button>
+                                </div>
                            </div>
                        </div>
                    </form>

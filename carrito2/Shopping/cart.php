@@ -56,9 +56,9 @@ require_once('./header.php');
 <div class="conatainer-fluid">
     <div class="row px-5">
 
-            <div class="col-md-7">
-                <div class=" shopping-cart">
-                    <h6>Carrito</h6>
+            <div class="container col-md-7">
+                <div class="shopping-cart">
+                    <h3 class="text-center my-2 pb-2">Carrito de compras</h3>
                     <hr>
                 <?php
 
@@ -85,7 +85,7 @@ require_once('./header.php');
             <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25">
                 <div class="p-4">
 
-                    <h6>PRICE DETAILS</h6>
+                    <h4>Detalle de precios</h4>
                     <hr>
 
                     <div class="row price-details">
@@ -93,24 +93,30 @@ require_once('./header.php');
                             <?php
                             if(isset($_SESSION['cart'])){
                                 $count = count($_SESSION['cart']);
-                                echo"<h6>Price ($count items)</h6>";
+
+                                if($count > 1 ){
+                                    echo"<h6>Precio ($count productos)</h6>";    
+                                }else{
+                                    echo"<h6>Precio ($count producto)</h6>";
+                                }
+                                
                             }else{
                                 echo"<h6>Price (0 items)</h6>";
                             }
                             ?>
-                            <h6>Delivery Charges</h6>
+                            <h6>Gastos de envio</h6>
                             <hr>
-                            <h6>Amount Payabel</h6>
+                            <h6>Cantidad a pagar</h6>
                         </div>
                         <div class="col-md-6">
                             <h6>$<?php echo $total;?></h6>
-                            <h6 class="text-success">FREE</h6>
+                            <h6 class="text-success">Gratis</h6>
                             <hr>
                             <h6> $ <?php echo $total; ?> </h6>
                         </div>
                     </div>
-
-                    <button>
+                    
+                    <button class="" >
                         
                         <a href="./direccion_envio.html"> Metodo de pago </a>
 
