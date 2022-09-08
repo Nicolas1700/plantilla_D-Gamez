@@ -17,10 +17,6 @@ if(isset($_POST['remove'])){
 
    if($_GET['action']=='remove'){
     
-    echo print_r($_SESSION['cart']);
-    echo "<br>";
-    echo "<br>";
-
        foreach($_SESSION['cart'] as $key =>$value){
 
            print_r("EL valor de key es: " . $key);

@@ -1,13 +1,15 @@
 
-<header id="">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-white border-button">
+<header class="container" id="">
+    <nav class="d-flex navbar navbar-expand-lg navbar-dark bg-white border-button container">
+
         <!-- Shopping Cart-->
         <a class="navbar-brand text-dark" href="./index_paguina.php">D&Gamez</a>
-        <a href="./index_paguina.php" class="navbar ">
-            <h3 class="px-5"></h3>
-            <i class="fas fa-shopping-basket"></i> 
-            <smap class="text-dark"> Inicio</smap>
+
+        <a href="./index_paguina.php" class="navbar px-3 nav-link text-dark">
+            <i class="fas fa-shopping-basket"></i>
+            <samp>Inicio</samp>
         </a>
+
         <button class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -19,22 +21,28 @@
             <span class="navbar-toggler-icon"></span>
 
         </button>
+        
+        <a class="navbar-nav d-flex justify-content-star ">
+            <samp class="">
+                <a class="nav-link text-dark w-50" href="./../../sobre_nosotros.html">Sobre nosotros</a>
+            </samp>
+        </a>
 
         
         <!-- botones de Perfil y carrito  -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex m-1 nav-item">
-                <a class="btn btn-outline-success " href="./configuracion_usuario/conf_usu.php">
-                    <i class="bi-person-fill me-1"></i>
-                    <?php echo $nombre_usuario ?>
-                </a>
-            </form>
+        <div class="d-flex justify-content-end collapse navbar-collapse mx-2" id="navbarSupportedContent">
             
-            <div class=" d-flex navbar-nav nav-item">
-                <!--  cart -->  
-                <a href="./cart.php" class="nav-item nav-link active cart">
+            <div class="d-flex m-1 nav-item">
+                <a class="btn btn-outline-success" href="./configuracion_usuario/conf_usu.php">
+                    <i class="bi-person-fill me-1"></i>
+                    <samp><?php echo $nombre_usuario ?></samp>
+                </a>
+            </div>
+            
+            <div class="d-flex justify-content-end collapse rounded mx-1 nav-item">
+                <a  class="btn btn-outline-primary" href="./cart.php" >
                     <i class="fas fa-shopping-cart"></i>
-                    <samp class="text-dark" >Carrito</samp>
+                    <samp class="text-dark w-100">Carrito</samp>
 
                     <?php
 
@@ -45,7 +53,7 @@
                         echo "<span id=\"cart_count\" class=\"text-warning bg-light\"></span>";
                     }
                     ?>
-                    </h5>
+                    
                 </a>
             </div>
         </div>

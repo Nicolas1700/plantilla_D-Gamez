@@ -22,7 +22,7 @@ if(isset($_POST['add'])){
     if(isset($_SESSION['cart'])){
 
         $item_array_id = array_column($_SESSION['cart'], column_key:'product_id');
-        print_r($item_array_id);
+        //print_r($item_array_id);
       
         if(in_array($_POST['product_id'],$item_array_id)){
             echo "<script>alert('El producto ha sido agregado al carrito..!')</script>";
@@ -33,7 +33,7 @@ if(isset($_POST['add'])){
             'product_id'=> $_POST['product_id'] 
         );
         $_SESSION['cart'][$count]= $item_array;
-        print_r($_SESSION['cart']);
+        //print_r($_SESSION['cart']);
         }
     }else{
 
@@ -43,11 +43,9 @@ if(isset($_POST['add'])){
 
         //create new session variable
         $_SESSION['cart'][0]=$item_array;
-        print_r($_SESSION['cart']);
+        //print_r($_SESSION['cart']);
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -93,50 +91,6 @@ if(isset($_POST['add'])){
 </head>
 
 <body>
-    <!-- Navigation-->
-    <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="./index_paguina.php">D&Gamez</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page"
-                            href="./index_paguina.php"><b>Inicio</b></a></li>
-                    <li class="nav-item"><a class="nav-link" href="./sobre_nosotros.html"><b>Sobre nosotros</b></a></li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false"><b>Tienda</b></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Tienda</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Articulos populares</a></li>
-                            <li><a class="dropdown-item" href="#!">Lo mas nuevo</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="d-flex m-1 nav-item">
-                    <a class="btn btn-outline-success " href="./configuracion_usuario/conf_usu.php">
-                        <i class="bi-person-fill me-1"></i>
-                        <?php echo $nombre_usuario ?>
-                    </a>
-                </form>
-                <form class="d-flex m-1 nav-item">
-                    <a class="btn btn-outline-dark mx-3" href="./carrito/detalle_de_venta.php">
-                        <i class="bi-cart-fill me-1"></i>
-                        <button class="badge bg-dark text-white ms-1 rounded-pill">0</button>
-                    </a>
-                </form>
-            </div>
-        </div>
-    </nav>-->
-
-    
     <?php require_once("./header.php");?>
     <!-- Header-->
     <header class="bg-dark py-4">
