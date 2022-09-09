@@ -19,17 +19,21 @@ if ($comprobacion) {
     $resultado = mysqli_query($mysqli,$consulta2);
     $row = mysqli_fetch_row($resultado);
     #print_r($row);
-
+    
+    $_SESSION['correo'] = $correo;
+    // Si guarda la contraseña
+    $_SESSION['contrasena'] = $contraseña;
     // $_SESION['id_usuario'] = $
     $_SESSION['row'] = $row;
-    $_SESSION['correo'] = $correo;
+
     header("location:./../../carrito2/Shopping/index_paguina.php");
 
 }else{
 
-    header("location:login.php");
+   header("location:login.php");
 
 }
+
 mysqli_free_result($resultado);
 mysqli_close($mysqli);
 

@@ -4,9 +4,12 @@ session_start();
 
 require_once("./CreateDb.php");
 require_once("./component.php");
+include("./../../inicio_de_sesion/login/con_bd.php");
 
 $row = $_SESSION['row'];
 $nombre_usuario = implode("",$row);
+$correo = $_SESSION['correo'];
+$contrasena = $_SESSION['contrasena'];
 
 $db = new CreateDb(dbname: "pre_proyecto_sena", tablename: "Producttb");
 
@@ -30,6 +33,15 @@ if(isset($_POST['remove'])){
        }
    }
 }
+
+//Obtener id del usuario 
+$consulta = "SELECT id_usuario FROM `usuario` WHERE correo = '$correo' AND contrasena = '$contrasena' ";
+$resultado = mysqli_query($mysqli,$consulta);
+$datos = mysqli_fetch_array($resultado);
+
+//El id del usuario
+$id_usuario = $datos['id_usuario'];
+
 
 ?>
 
@@ -62,7 +74,8 @@ require_once('./header.php');
                     <hr>
                 <?php
 
-                    $total = 0;
+                $total = 0;
+
                 if (isset($_SESSION['cart'])){
                     $product_id = array_column($_SESSION['cart'],column_key:'product_id');
 
@@ -78,6 +91,13 @@ require_once('./header.php');
                 }else{
                     echo"<h5>Cart is Empty</h5>";
                 }
+                
+                /*
+                foreach( $product_id as $id ){
+                    echo $id;
+
+                }*/
+
                 ?>
 
                 </div>
@@ -117,10 +137,31 @@ require_once('./header.php');
                     </div>
                     
                     <button class="" >
+                    </button>    
+                        <a href="./metodo_y_pago.php"> Metodo de pago </a>
+                        <?php 
+                        // Se obtienen solo los valores de id
+                        $ids = implode(", ",array_values($product_id));
                         
-                        <a href="./direccion_envio.html"> Metodo de pago </a>
+                        $consulta_2 = "INSERT INTO detalle_venta (`id_producto`, `id_usuario`, `precio_final`) VALUES ($ids,$id_usuario,$total)";
+                        // $resultado = mysqli_query($mysqli,$consulta_2);
+                        
 
-                    </button>
+                        echo "<br> Los ids son: ";
+                        print_r($ids);
+
+                        mysqli_free_result($resultado);
+                        mysqli_close($mysqli);
+
+                        ?>
+                        <!-- Insertar en tabla detalle_venta
+
+                        ---Se necesita: id_producto (X cada producto en carrito)--- 
+
+                        id_usuario (YA esta arriba, en $id)
+                        precio_final (YA esta en $total) -->
+
+                    
                 </div>
             </div>
         
