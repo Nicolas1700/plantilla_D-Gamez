@@ -13,7 +13,6 @@ $contrasena = $_SESSION['contrasena'];
 
 $db = new CreateDb(dbname: "pre_proyecto_sena", tablename: "Producttb");
 
-//$id_producto = $_GET['id'];
 
 // Remover producto
 if(isset($_POST['remove'])){
@@ -91,12 +90,6 @@ require_once('./header.php');
                 }else{
                     echo"<h5>Cart is Empty</h5>";
                 }
-                
-                /*
-                foreach( $product_id as $id ){
-                    echo $id;
-
-                }*/
 
                 ?>
 
@@ -109,6 +102,7 @@ require_once('./header.php');
                     <hr>
 
                     <div class="row price-details">
+
                         <div class="col-md-6">
                             <?php
                             if(isset($_SESSION['cart'])){
@@ -128,45 +122,46 @@ require_once('./header.php');
                             <hr>
                             <h6>Cantidad a pagar</h6>
                         </div>
+
                         <div class="col-md-6">
                             <h6>$<?php echo $total;?></h6>
                             <h6 class="text-success">Gratis</h6>
                             <hr>
-                            <h6> $ <?php echo $total; ?> </h6>
+                            <h6> $ <?php echo $total?> </h6>
                         </div>
+
                     </div>
+                        <button class="w-100" type="submit" onclick="registrar_pedido()">
+
+                            <a class="text-decoration-none"href="./confirmacion_pedido.php"> Continuar con el pago 
+                        
+                                <?php 
+
+                                date_default_timezone_set('America/Bogota');
+                                $fecha = date('d-m-y');
+
+                                $venta_confirmada = 0;
+                                $consulta_2 = "INSERT INTO detalle_venta (id_usuario,precio_final,venta_confirmada) VALUES ($id_usuario,$total,$venta_confirmada)";
+                                $resultado = mysqli_query($mysqli,$consulta_2);
+
+                                mysqli_close($mysqli)
+                                ?>
+                                
+                            </a>
+                        </button>
                     
-                    <button class="" >
-                    </button>    
-                        <a href="./metodo_y_pago.php"> Metodo de pago </a>
-                        <?php 
-                        // Se obtienen solo los valores de id
-                        $ids = implode(", ",array_values($product_id));
-                        
-                        $consulta_2 = "INSERT INTO detalle_venta (`id_producto`, `id_usuario`, `precio_final`) VALUES ($ids,$id_usuario,$total)";
-                        // $resultado = mysqli_query($mysqli,$consulta_2);
-                        
-
-                        echo "<br> Los ids son: ";
-                        print_r($ids);
-
-                        mysqli_free_result($resultado);
-                        mysqli_close($mysqli);
-
-                        ?>
-                        <!-- Insertar en tabla detalle_venta
-
-                        ---Se necesita: id_producto (X cada producto en carrito)--- 
-
-                        id_usuario (YA esta arriba, en $id)
-                        precio_final (YA esta en $total) -->
-
                     
                 </div>
             </div>
         
     </div>
 </div>
+
+<script>
+    function onclick () {
+        var result = "<?php insertar_pedido(); ?>    
+    }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2022 a las 05:55:05
+-- Tiempo de generación: 11-09-2022 a las 05:04:37
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -25,10 +25,10 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_usuario` (IN `nombre` VARCHAR(25), `apellido` VARCHAR(25), `celular` INT(11), `correo` VARCHAR(50), `contrasena` VARCHAR(50))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_usuario` (IN `nombre` VARCHAR(25), IN `apellido` VARCHAR(25), IN `celular` INT(11), IN `correo` VARCHAR(50), IN `direccion` VARCHAR(50), IN `contrasena` VARCHAR(50))   BEGIN
 
-INSERT INTO `usuario`(`nombre`, `apellido`, `celular`, `correo`, `contrasena`)
-VALUES (nombre, apellido, celular, correo, contrasena);
+INSERT INTO `usuario`(`nombre`, `apellido`, `celular`, `correo`, `direccion`,`contrasena`)
+VALUES (nombre, apellido, celular, correo, direccion, contrasena);
 
 END$$
 
@@ -42,6 +42,56 @@ RETURN nom;
 END$$
 
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detalle_venta`
+--
+
+CREATE TABLE `detalle_venta` (
+  `id_detalle_venta` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `precio_final` int(11) NOT NULL,
+  `venta_confirmada` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detalle_venta`
+--
+
+INSERT INTO `detalle_venta` (`id_detalle_venta`, `id_usuario`, `precio_final`, `venta_confirmada`) VALUES
+(142, 19, 130000, 0),
+(143, 19, 130000, 0),
+(144, 19, 130000, 0),
+(145, 19, 130000, 0),
+(146, 19, 130000, 0),
+(147, 19, 130000, 0),
+(148, 19, 130000, 0),
+(149, 19, 130000, 0),
+(150, 19, 130000, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id_pedido` int(11) NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `fecha` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id_pedido`, `id_usuario`, `fecha`) VALUES
+(227, 19, '2022-09-10'),
+(228, 19, '2022-09-10'),
+(229, 19, '2022-09-10'),
+(230, 19, '2022-09-10');
 
 -- --------------------------------------------------------
 
@@ -61,10 +111,10 @@ CREATE TABLE `producttb` (
 --
 
 INSERT INTO `producttb` (`id`, `product_name`, `product_price`, `product_image`) VALUES
-(1, 'Jean 1', 42000, './img/exposicion_de_jeans.jpg'),
-(2, 'Jean 2', 45000, './img/exposicion_de_jeans.jpg'),
-(3, 'Jean 3', 43000, './img/exposicion_de_jeans.jpg'),
-(4, 'Jean 4', 42000, './img/exposicion_de_jeans.jpg');
+(1, 'Jean 1', 42000, './../img_carrito/exposicion_de_jeans.jpg'),
+(2, 'Jean 2', 45000, './../img_carrito/exposicion_de_jeans.jpg'),
+(3, 'Jean 3', 43000, './../img_carrito/exposicion_de_jeans.jpg'),
+(4, 'Jean 4', 42000, './../img_carrito/exposicion_de_jeans.jpg');
 
 -- --------------------------------------------------------
 
@@ -78,20 +128,34 @@ CREATE TABLE `usuario` (
   `apellido` varchar(25) NOT NULL,
   `celular` int(11) NOT NULL,
   `correo` varchar(50) NOT NULL,
-  `contrasena` varchar(65) NOT NULL
+  `contrasena` varchar(65) NOT NULL,
+  `direccion` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `celular`, `correo`, `contrasena`) VALUES
-(15, 'Nicolas', 'Parada Cuervo', 2147483647, 'a@a.a', 'aaaa'),
-(16, 'Nicolas', 'Parada Cuervo', 2147483647, 'a@a.a', 'asas');
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `celular`, `correo`, `contrasena`, `direccion`) VALUES
+(19, 'Nicolas', 'Parada', 2147483647, 'a@a.a', 'aaaa', 'Transversal 15 #39B - 05');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `detalle_venta`
+--
+ALTER TABLE `detalle_venta`
+  ADD PRIMARY KEY (`id_detalle_venta`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id_pedido`),
+  ADD KEY `id__usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `producttb`
@@ -110,6 +174,18 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `detalle_venta`
+--
+ALTER TABLE `detalle_venta`
+  MODIFY `id_detalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
+
+--
 -- AUTO_INCREMENT de la tabla `producttb`
 --
 ALTER TABLE `producttb`
@@ -119,7 +195,17 @@ ALTER TABLE `producttb`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD CONSTRAINT `id__usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

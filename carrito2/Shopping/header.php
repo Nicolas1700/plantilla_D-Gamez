@@ -20,7 +20,7 @@
         <div class="d-flex justify-content-end collapse navbar-collapse mx-2" id="navbarSupportedContent">
             
             <div class="d-flex m-1 nav-item">
-                <a class="btn btn-outline-success" href="./configuracion_usuario/conf_usu.php">
+                <a class="btn btn-outline-success" href="./conf_usu.php">
                     <i class="bi-person-fill me-1"></i>
                     <samp><?php echo $nombre_usuario ?></samp>
                 </a>

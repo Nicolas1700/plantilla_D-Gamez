@@ -98,24 +98,6 @@
             </div>
         </div>
     </main>
-    <!--
-    </div>
-    <div id="layoutAuthentication_footer">
-        <footer class="py-2 bg-light mt-4">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    -->
     <script src="./../../js/validacion.js"></script>
     <script src="./../../js/evitar_reenvio.js"></script>
     <script src="https://kit.fontawesome.com/1c7fd3bbff.js" crossorigin="anonymous"></script>
