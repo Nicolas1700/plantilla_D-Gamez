@@ -52,9 +52,9 @@ try {
   $mail->Body    =  $mensaje;
 
   $mail->send();
-  echo 'Se envio el correo';
+  //echo 'Se envio el correo';
 } catch (Exception $e) {
-  echo "No se envio el correo. Mailer Error: {$mail->ErrorInfo}";
+  //echo "No se envio el correo. Mailer Error: {$mail->ErrorInfo}";
 }
 
 mysqli_close($mysqli);
@@ -110,7 +110,7 @@ mysqli_close($mysqli);
         </h5>
         <div class="d-flex justify-content-center p-3">
           <button class=" btn btn-outline-success m-2 text-center  w-50">
-          <a class="text-decoration-none text-info " href="">Volver al menu de inicio</a>
+          <a class="text-decoration-none text-info " href="./index_paguina.php">Volver al menu de inicio</a>
           </button>
         </div>
 
