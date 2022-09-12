@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2022 a las 05:04:37
+-- Tiempo de generación: 12-09-2022 a las 04:11:03
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -56,21 +56,6 @@ CREATE TABLE `detalle_venta` (
   `venta_confirmada` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `detalle_venta`
---
-
-INSERT INTO `detalle_venta` (`id_detalle_venta`, `id_usuario`, `precio_final`, `venta_confirmada`) VALUES
-(142, 19, 130000, 0),
-(143, 19, 130000, 0),
-(144, 19, 130000, 0),
-(145, 19, 130000, 0),
-(146, 19, 130000, 0),
-(147, 19, 130000, 0),
-(148, 19, 130000, 0),
-(149, 19, 130000, 0),
-(150, 19, 130000, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -82,16 +67,6 @@ CREATE TABLE `pedidos` (
   `id_usuario` int(11) DEFAULT NULL,
   `fecha` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `pedidos`
---
-
-INSERT INTO `pedidos` (`id_pedido`, `id_usuario`, `fecha`) VALUES
-(227, 19, '2022-09-10'),
-(228, 19, '2022-09-10'),
-(229, 19, '2022-09-10'),
-(230, 19, '2022-09-10');
 
 -- --------------------------------------------------------
 
@@ -177,13 +152,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `id_detalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id_detalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 
 --
 -- AUTO_INCREMENT de la tabla `producttb`

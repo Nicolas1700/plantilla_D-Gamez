@@ -79,14 +79,21 @@ require_once('./header.php');
                     $product_id = array_column($_SESSION['cart'],column_key:'product_id');
 
                     $result = $db->getDate();
+
+                    $nombre_producto = array();
+
                     while ($row = mysqli_fetch_assoc($result)){                
                         foreach ($product_id as $id){
                             if ($row['id']== $id){
                                 cartElement($row['product_image'],$row['product_name'],$row['product_price'], $row['id']);
                                 $total = $total + (int)$row['product_price'];
+
+                                array_push($nombre_producto, $row['product_name']);
                             }
                         }
-                    } 
+                    }
+                    $_SESSION['nombre_producto'] = $nombre_producto;
+
                 }else{
                     echo"<h5>Cart is Empty</h5>";
                 }
@@ -157,10 +164,6 @@ require_once('./header.php');
     </div>
 </div>
 
-<script>
-    function onclick () {
-        var result = "<?php insertar_pedido(); ?>    
-    }
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

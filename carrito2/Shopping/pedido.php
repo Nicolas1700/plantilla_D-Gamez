@@ -1,23 +1,62 @@
 <?php
 
 session_start();
-// require_once("././../../inicio_de_sesion/login/validar.php");
-include("./../../inicio_de_sesion/login/con_bd.php");
+
+include('./../../inicio_de_sesion/login/con_bd.php');
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/Exception.php';
+require 'phpmailer/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
 
 $correo = $_SESSION['correo'];
 $contrasena = $_SESSION['contrasena'];
 
 //Obtener id y direcion del usuario 
-$consulta = "SELECT id_usuario, direccion FROM `usuario` WHERE correo = '$correo' AND contrasena = '$contrasena' ";
+$consulta = "SELECT nombre, apellido, direccion  FROM `usuario` WHERE correo = '$correo' AND contrasena = '$contrasena' ";
 $resultado = mysqli_query($mysqli,$consulta);
 $datos = mysqli_fetch_array($resultado);
 
-//El id del usuario
-$id = $datos['id_usuario'];
+//El nombre del usuario
+$nombre = $datos['nombre'];
+$apellidos = $datos['apellido'];
+
+$nombre_usuario = $nombre ." ". $apellidos;
 //la direccion del usuario
 $direccion = $datos['direccion'];
 
-mysqli_free_result($resultado);
+$nombre_producto = $_SESSION['nombre_producto'];
+$nombre_producto = implode(", ",$nombre_producto);
+$mensaje = "El pedido generado tiene asignado los productos: " . $nombre_producto . 
+" de la persona se llama ".$nombre_usuario." y su direccion es : " . $direccion ;
+
+$mail = new PHPMailer();
+
+try {
+  //Server settings
+  $mail->isSMTP();                                            //Send using SMTP
+  $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+  $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+  $mail->Username   = 'dgamezdd@gmail.com';                   //SMTP username
+  $mail->Password   = 'jiuqxlugynvsdfut';                               //SMTP password
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+  $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+  //Del correo que se va a enviar --> al que le va a llegar
+  $mail->setFrom('dgamezdd@gmail.com', 'Sitio Web');
+  $mail->addAddress('dgamezdd@gmail.com');
+
+  //Content
+  $mail->isHTML(true);                                  //Set email format to HTML
+  $mail->Subject = 'Se ha generado un pedido';
+  $mail->Body    =  $mensaje;
+
+  $mail->send();
+  echo 'Se envio el correo';
+} catch (Exception $e) {
+  echo "No se envio el correo. Mailer Error: {$mail->ErrorInfo}";
+}
+
 mysqli_close($mysqli);
 ?>
 
@@ -61,8 +100,21 @@ mysqli_close($mysqli);
   </nav>
   <main class="container">
     <section class="container">
-      <h2 class="mb-3 text-center py-3">Felicidades...</h2>
-      
+      <div  class="">
+
+        <h2 class="mb-3 text-center py-3 w-100">Felicidades...<i class="bi bi-check-circle-fill text-success"></i></h2>
+
+        <h5 class="text-center m-3 w-100 p-2 ">
+          Se ha generado correctamente el pedido, <br>
+          ¡Nuestro equipo estara realidado el proceso de envío!
+        </h5>
+        <div class="d-flex justify-content-center p-3">
+          <button class=" btn btn-outline-success m-2 text-center  w-50">
+          <a class="text-decoration-none text-info " href="">Volver al menu de inicio</a>
+          </button>
+        </div>
+
+      </div>
       
     </section>  
   </main>

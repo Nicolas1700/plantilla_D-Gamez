@@ -1,8 +1,9 @@
 <?php
 
 session_start();
-// require_once("././../../inicio_de_sesion/login/validar.php");
+
 include("./../../inicio_de_sesion/login/con_bd.php");
+
 
 $correo = $_SESSION['correo'];
 $contrasena = $_SESSION['contrasena'];
@@ -87,15 +88,9 @@ $direccion = $datos['direccion'];
         <button class="d-flex justify-content-center w-50 my-4 btn btn-primary btn-lg btn-block">
         <a href="./pedido.php" class="text-decoration-none text-light w-100"> Confirmar 
           <?php 
-            
-            /* Enviar por correo el pedido a la empresa
-            El correo es: 
-            La clave es:  
-            */
             // Fecha 
             date_default_timezone_set("America/Bogota");
             $fecha_actual = date('Y-m-d');
-            echo $fecha_actual;
             $consulta_4 = "INSERT INTO pedidos (id_usuario, fecha) VALUES ('$id','$fecha_actual')";
             $resultado = mysqli_query($mysqli,$consulta_4);
 
