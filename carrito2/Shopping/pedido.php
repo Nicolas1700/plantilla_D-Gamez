@@ -106,7 +106,7 @@ mysqli_close($mysqli);
 
         <h5 class="text-center m-3 w-100 p-2 ">
           Se ha generado correctamente el pedido, <br>
-          ¡Nuestro equipo estara realidado el proceso de envío!
+          ¡Nuestro equipo estara realizando el proceso de envío!
         </h5>
         <div class="d-flex justify-content-center p-3">
           <button class=" btn btn-outline-success m-2 text-center  w-50">
